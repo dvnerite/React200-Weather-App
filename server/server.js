@@ -12,9 +12,15 @@ app.use(express.static('public'));
 
 app.get('/search/:city', (req, res) => {
     cityName = req.params.city;
+    console.log(cityName);
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`)
             .then(response => res.send(response.data))
-            .catch(err => console.log(err));
+            .catch(err => console.log("err"));
 });
 
 module.exports = app;
+
+app.get('/',(req,res)=>{
+    res.send('hello')
+    console.log('okayy');
+})
